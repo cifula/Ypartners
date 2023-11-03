@@ -1,9 +1,9 @@
 spring:
   datasource:
     driver-class-name: com.mysql.cj.jdbc.Driver
-    url: jdbc:mysql://localhost:3306/yroom
+    url: jdbc:mysql://ap-northeast-2.console.aws.amazon.com/ec2/v2/home?region=ap-northeast-2#SecurityGroups:search=sg-04da4eb6934dbe9f8
     username: root
-    password: root
+    password: ypartners
     
 mybatis:
   mapper-locations:
