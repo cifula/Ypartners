@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.YPartners.YRoom.MainRepository">
+
+	<insert id="saveReservations" parameterType="java.util.List" useGeneratedKeys="true" keyProperty="id" >
+		insert into 
+			reservation_tb
+		values
+	  <foreach collection="list" item="item" separator=",">
+	    (
+	    	0,
+	    	#{item.dateTime},
+	    	#{item.name}
+	    )
+	  </foreach>
+	</insert>
+	
+	<select id="findReservationIdByDateTime" parameterType="java.util.List" resultType="Integer">
+		select
+			id
+		from
+			reservation_tb
+		where
+			reservation_datetime = #{dateTime}
+	</select>
+	
+	<select id="getList" parameterType="java.util.Map" resultType="java.time.LocalDateTime">
+		select
+			reservation_datetime
+		from
+			reservation_tb
+		where
+			reservation_datetime between #{startDateTime} and #{endDateTime}
+	</select>
+
+</mapper>
